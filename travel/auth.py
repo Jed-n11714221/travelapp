@@ -8,7 +8,7 @@ authbp = Blueprint('auth', __name__ )
 def login():
     loginForm = LoginForm()
     if loginForm.validate_on_submit():
-        print(loginForm.user_name, loginForm.password)
+        print(loginForm.user_name.data, loginForm.password.data)
         flash('You logged in successfully')
         return redirect(url_for('auth.login'))
     return render_template('user.html', form=loginForm,  heading='Login')
