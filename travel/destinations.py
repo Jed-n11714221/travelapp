@@ -11,7 +11,7 @@ destbp = Blueprint('destination', __name__, url_prefix='/destinations')
 def show(id):
     destination = get_destination()
     cform = CommentForm()
-    return render_template('destinations/show.html', destination=destination)
+    return render_template('destinations/show.html', destination=destination, form=cform)
 
 def get_destination():
   # creating the description of Brazil
