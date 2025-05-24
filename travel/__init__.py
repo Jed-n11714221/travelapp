@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_bootstrap import Bootstrap5
 
 def create_app():
     app = Flask(__name__)
