@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField
-from wtforms.validators import InputRequired, Length
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
+from wtforms.validators import InputRequired, Email, EqualTo
 
 class DestinationForm(FlaskForm):
   name = StringField('Country', validators=[InputRequired()])
@@ -10,3 +10,17 @@ class DestinationForm(FlaskForm):
   image = StringField('Cover Image', validators=[InputRequired()])
   currency = StringField('Currency', validators=[InputRequired()])
   submit = SubmitField("Create")
+
+class LoginForm(FlaskForm):
+    user_name = StringField("User Name", validators=[InputRequired('Enter user name')])
+    password = PasswordField("Password", validators=[InputRequired('Enter user password')])
+    submit = SubmitField("Login")
+
+class RegisterForm(FlaskForm):
+    user_name = StringField("User Name", validators=[InputRequired()])
+    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    
+    password = PasswordField("Password", validators=[InputRequired(),
+                  EqualTo('confirm', message="Passwords should match")])
+    confirm = PasswordField("Confirm Password", validators=[InputRequired(), EqualTo(password)])
+    submit = SubmitField("Register")
