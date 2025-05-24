@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from .models import Destination, Comment
+from .forms import DestinationForm
 
 # Use of blue print to group routes, 
 # name - first argument is the blue print name 
@@ -27,3 +28,11 @@ def get_destination():
   comment = Comment("Sally", "free face masks!", '2023-08-12 11:00:00')
   destination.set_comments(comment)
   return destination
+
+@destbp.route('/create', methods = ['GET', 'POST'])
+def create():
+  print('Method type: ', request.method)
+  form = DestinationForm()
+  if form.validate_on_submit():
+    print('Successfully created new travel destination', 'success')
+  return render_template('destinations/create.html', form=form)
