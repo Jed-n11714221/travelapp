@@ -7,11 +7,13 @@ def create_app():
     Bootstrap5(app)
 
     app.secret_key = 'somerandomvalue'
-    
+
     # add Blueprints
     from . import views
     app.register_blueprint(views.mainbp)
     from . import destinations
     app.register_blueprint(destinations.destbp)
+    from . import auth
+    app.register_blueprint(auth.authbp)
 
     return app
