@@ -38,14 +38,16 @@
 
          <div class="card-group">
             {% for destination in destinations %}
-            <div class="card mx-3">
-               <img class="card-img-top"
-                  src="{{destination.image}}" alt="destination picture">
-               <div class="card-body">
-                  <h5 class="card-title">{{destination.name}}</h5>
-                  <p class="card-text">{{destination.description}}</p>
+            <div class="col-3">
+               <div class="card mx-3 mb-3" style="width: 18rem;">
+                  <img class="card-img-top"
+                     src="{{destination.image}}" alt="destination picture" style="height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                     <h5 class="card-title">{{destination.name}}</h5>
+                     <p class="card-text">{{destination.description}}</p>
+                  </div>
+                  <div class="card-footer"><a href="{{url_for('destination.show', id=destination.id)}}" class ="btn btn-danger"> View Details </a></div>
                </div>
-               <div class="card-footer"><a href="{{url_for('destination.show', id=destination.id)}}" class ="btn btn-danger"> View Details </a></div>
             </div>
             {% endfor %}
          </div>
