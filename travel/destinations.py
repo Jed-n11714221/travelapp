@@ -51,7 +51,8 @@ def check_upload_file(form):
   fp.save(upload_path)
   return db_upload_path
 
-@destbp.route('/<id>/comment', methods=['GET', 'POST'])  
+@destbp.route('/<id>/comment', methods=['GET', 'POST'])
+@login_required  
 def comment(id):  
     form = CommentForm()  
     # get the destination object associated to the page and the comment
