@@ -12,6 +12,8 @@ def create_app():
     
     Bootstrap5(app)
 
+    Bcrypt(app)
+
     app.secret_key = 'somerandomvalue'
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///traveldb.sqlite'
