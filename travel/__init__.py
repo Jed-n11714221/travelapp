@@ -1,5 +1,8 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap5
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
@@ -8,7 +11,9 @@ def create_app():
 
     app.secret_key = 'somerandomvalue'
 
-    # add Blueprints
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///traveldb.sqlite'
+    db.init_app(app)
+
     from . import views
     app.register_blueprint(views.mainbp)
     from . import destinations
